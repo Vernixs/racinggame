@@ -14,24 +14,24 @@ public class RearWheelDrive : MonoBehaviour {
 	{
 		wheels = GetComponentsInChildren<WheelCollider>();
 
-		for (int i = 0; i < wheels.Length; ++i) 
+		for (int i = 0; i < wheels.Length; ++i)
 		{
-			var wheel = wheels [i];
+			var wheel = wheels[i];
 
 			// create wheel shapes only when needed
 			if (wheelShape != null)
 			{
-				var ws = GameObject.Instantiate (wheelShape);
+				var ws = GameObject.Instantiate(wheelShape);
 				ws.transform.parent = wheel.transform;
-				
-				
+
+
 				print(wheel.transform.localPosition.x);
 
 
 				if (wheel.transform.localPosition.x > 3.4f)
-                {
-					ws.transform.localScale = new Vector3(ws.transform.localScale.x*-1f,ws.transform.localScale.y,ws.transform.localScale.z);
-                }
+				{
+					ws.transform.localScale = new Vector3(ws.transform.localScale.x * -1f, ws.transform.localScale.y, ws.transform.localScale.z);
+				}
 ;
 			}
 		}
