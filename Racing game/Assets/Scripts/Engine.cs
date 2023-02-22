@@ -19,6 +19,7 @@ public class Engine : MonoBehaviour
     public float mass;
     public float netForce;
     Vector3 carVelocity;
+    Vector3 carPosition;
     void Start()
     {
         
@@ -36,7 +37,8 @@ public class Engine : MonoBehaviour
         rollingResistance = -cDrag * vel;
         longtitudinalForce = tractiveForce + fDrag + rollingResistance;
         acceleration = netForce / mass;
-        rb.velocity = vel.normalized + timeIncrement * acceleration;
+        vel = vel.normalized + (timeIncrement * acceleration);
+        carPosition = carPosition + timeIncrement * vel;
 
     }
 }
