@@ -37,7 +37,7 @@ public class Engine : MonoBehaviour
         rollingResistance = -cDrag * vel;
         longtitudinalForce = tractiveForce + fDrag + rollingResistance;
         acceleration = netForce / mass;
-        vel = vel.normalized + (timeIncrement * acceleration);
+       // vel = vel.normalized + (timeIncrement * acceleration);
         carPosition = carPosition + timeIncrement * vel;
 
     }
