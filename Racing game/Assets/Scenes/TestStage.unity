@@ -164,11 +164,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 1.35
   m_SuspensionSpring:
-    spring: 2539.6604
-    damper: 406.34564
+    spring: 2006.1134
+    damper: 320.97815
     targetPosition: 0.86
-  m_SuspensionDistance: 0.11406975
-  m_ForceAppPointDistance: 2.4436028
+  m_SuspensionDistance: 0.114069775
+  m_ForceAppPointDistance: 2.3890293
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -336,11 +336,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 1.35
   m_SuspensionSpring:
-    spring: 2693.3215
-    damper: 430.93146
+    spring: 2117.5027
+    damper: 338.80045
     targetPosition: 0.86
   m_SuspensionDistance: 0.11406977
-  m_ForceAppPointDistance: 2.4436028
+  m_ForceAppPointDistance: 2.3890293
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -731,6 +731,50 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!1 &1278416099
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1278416100}
+  - component: {fileID: 1278416101}
+  m_Layer: 0
+  m_Name: FrontofCar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1278416100
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278416099}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0, y: 0, z: 8.4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1793822371}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1278416101
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1278416099}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5.3354034, y: 1.81036, z: 1.9415768}
+  m_Center: {x: 0.21723238, y: 0.052601535, z: -1.069176}
 --- !u!1 &1453326473
 GameObject:
   m_ObjectHideFlags: 0
@@ -773,11 +817,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 1.19
   m_SuspensionSpring:
-    spring: 2306.4956
-    damper: 369.0393
+    spring: 2882.366
+    damper: 461.17856
     targetPosition: 0.86
-  m_SuspensionDistance: 0.114069775
-  m_ForceAppPointDistance: 2.283603
+  m_SuspensionDistance: 0.11406978
+  m_ForceAppPointDistance: 2.2290292
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -914,6 +958,7 @@ GameObject:
   - component: {fileID: 1793822370}
   - component: {fileID: 1793822368}
   - component: {fileID: 1793822369}
+  - component: {fileID: 1793822372}
   m_Layer: 0
   m_Name: TestCar1
   m_TagString: Untagged
@@ -986,9 +1031,33 @@ Transform:
   - {fileID: 1453326474}
   - {fileID: 348856218459290498}
   - {fileID: 26743194}
+  - {fileID: 1278416100}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: -91.345, z: 0}
+--- !u!114 &1793822372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793822367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf9b7aea86771e4eb7f0566dce092fb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  cDrag: 10
+  torque: 500
+  engineForce: 10
+  acceleration: 0
+  timeIncrement: 0
+  mass: 0
+  netForce: 0
+  speed: 100
+  coefficientOfFriction: 0.1
+  backWheels: []
+  frontWheels: []
 --- !u!1 &2037440837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1031,11 +1100,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 1.19
   m_SuspensionSpring:
-    spring: 2460.5227
-    damper: 393.68365
+    spring: 2994.0176
+    damper: 479.04282
     targetPosition: 0.86
-  m_SuspensionDistance: 0.11406978
-  m_ForceAppPointDistance: 2.283603
+  m_SuspensionDistance: 0.114069775
+  m_ForceAppPointDistance: 2.2290292
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
