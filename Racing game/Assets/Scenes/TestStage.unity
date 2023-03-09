@@ -293,7 +293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 35075586f8153124f865d9bbf4871a56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
+  target: {fileID: 1793822371}
   smoothing: 5
 --- !u!1 &171527615
 GameObject:
@@ -849,7 +849,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a978ad9448556458985ffada74f266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelCollider: {fileID: 0}
+  wheelCollider: {fileID: 1453326475}
   grip: 1
 --- !u!1 &1703728964
 GameObject:
@@ -959,6 +959,7 @@ GameObject:
   - component: {fileID: 1793822368}
   - component: {fileID: 1793822369}
   - component: {fileID: 1793822372}
+  - component: {fileID: 1793822373}
   m_Layer: 0
   m_Name: TestCar1
   m_TagString: Untagged
@@ -973,7 +974,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793822367}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d6b1dc5e3580d8f429e2ae0b0280e1d6, type: 3}
   m_Name: 
@@ -988,7 +989,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793822367}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a541b2aa7aabc8a4f8a43acf0c0ecf95, type: 3}
   m_Name: 
@@ -1042,7 +1043,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1793822367}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ccf9b7aea86771e4eb7f0566dce092fb, type: 3}
   m_Name: 
@@ -1058,6 +1059,23 @@ MonoBehaviour:
   coefficientOfFriction: 0.1
   backWheels: []
   frontWheels: []
+--- !u!114 &1793822373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1793822367}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6f3fc21a406a3d346a406e94577507cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mass: 1200
+  dragCoeff: 0.25
+  tireGrip: 2
+  brakePower: 20000
+  maxSteerAngle: 30
 --- !u!1 &2037440837
 GameObject:
   m_ObjectHideFlags: 0
@@ -1132,7 +1150,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 49a978ad9448556458985ffada74f266, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  wheelCollider: {fileID: 0}
+  wheelCollider: {fileID: 2037440839}
   grip: 1
 --- !u!4 &348856218459290498
 Transform:
@@ -1258,6 +1276,6 @@ MeshCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 4
-  m_Convex: 0
+  m_Convex: 1
   m_CookingOptions: 30
   m_Mesh: {fileID: -4257497992121019520, guid: 45f4fb64e0988314683b1af3afe3a5cb, type: 3}

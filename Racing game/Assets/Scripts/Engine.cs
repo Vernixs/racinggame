@@ -70,7 +70,7 @@ public class Engine : MonoBehaviour
         carPosition = carPosition + timeIncrement * vel;
     }
 
-    void Air()
+    /*void Air()
     {
         Debug.Log(speed);
         speed = speed * speed;
@@ -78,7 +78,7 @@ public class Engine : MonoBehaviour
         airDensity = (float)(0.5 * 0.30 * 2.2 * 1.29);
         airResults = 30 * airDensity;
 
-    }
+    }*/
 
     void braking()
     {
@@ -86,10 +86,10 @@ public class Engine : MonoBehaviour
         //brakingForce = -transform.forward * ;
     }
 
-    void WeightTransfer()
+    /*void WeightTransfer()
     {
         maxTractionForce = frictionCoeffiecientTyre * weight;
-        frontWheels = (fCG / L) * weight;
-        rearWheels = (rCG / L) * weight;
-    }
+        //frontWheels = (fCG / L) * weight;
+        //rearWheels = (rCG / L) * weight;
+    }*/
 }
