@@ -4,79 +4,51 @@ using UnityEngine;
 
 public class C1 : MonoBehaviour
 {
-    // Car parameters
-    public float mass = 1200f;     // mass of car in kg
-    public float dragCoeff = 0.25f;  // drag coefficient of car
-    public float tireGrip = 2f;     // grip of tires on road
-    public float brakePower = 20000f;  // braking power of car
-    public float maxSteerAngle = 30f;  // maximum steering angle of front wheels
+    public float maxMotorTorque = 1000f;
+    public float maxBrakeTorque = 2000f;
+    public float maxSteeringAngle = 30f;
+    public float wheelRadius = 0.33f;
+    public float wheelFriction = 1.5f;
+    public float drag = 0.1f;
+    public float angularDrag = 0.5f;
 
-    // Car state
-    private float speed = 0f;     // current speed of car in m/s
-    private float accel = 0f;     // current acceleration of car in m/s^2
-    private float steerAngle = 0f;  // current steering angle of front wheels
+    private Rigidbody carRigidbody;
+    private WheelCollider[] wheels;
 
-    // Physics constants
-    private const float g = 9.81f;    // gravitational constant
-    private const float dt = 0.02f;   // simulation timestep
+    private float motorTorque = 100f;
+    private float brakeTorque = 50f;
+    private float steeringAngle = 30f;
 
-    // Cached components
-    private Rigidbody rigidbodys;
-    private Transform centerOfMass;
-    private WheelCollider[] wheelColliders;
-
-    private void Start()
+    void Start()
     {
-        rigidbodys = GetComponent<Rigidbody>();
-        centerOfMass = transform.Find("CenterOfMass");
-        wheelColliders = GetComponentsInChildren<WheelCollider>();
+        carRigidbody = GetComponent<Rigidbody>();
+        wheels = GetComponentsInChildren<WheelCollider>();
 
-        // Set center of mass of rigidbody
-        if (centerOfMass != null)
-            rigidbodys.centerOfMass = centerOfMass.localPosition;
+        foreach (WheelCollider wheel in wheels)
+        {
+            wheel.radius = wheelRadius;
+            wheel.forwardFriction.stiffness = wheelFriction;
+            wheel.sidewaysFriction.stiffness = wheelFriction;
+        }
+
+        carRigidbody.drag = drag;
+        carRigidbody.angularDrag = angularDrag;
     }
 
-    private void FixedUpdate()
+    void Update()
     {
-        // Calculate inputs
-        float throttleInput = Input.GetAxis("Vertical");
-        float brakeInput = Input.GetKey(KeyCode.Space) ? 1f : 0f;
-        float steerInput = Input.GetAxis("Horizontal");
+        motorTorque = Input.GetAxis("Vertical") * maxMotorTorque;
+        brakeTorque = Input.GetKey(KeyCode.Space) ? maxBrakeTorque : 0f;
+        steeringAngle = Input.GetAxis("Horizontal") * maxSteeringAngle;
+    }
 
-        // Calculate forces
-        float engineForce = throttleInput * mass * g;
-        float dragForce = -dragCoeff * speed * speed;
-        float brakeForce = brakeInput * brakePower;
-        float gripForce = tireGrip * mass * g;
-
-        // Calculate total force
-        float totalForce = engineForce + dragForce - brakeForce;
-
-        // Calculate acceleration
-        accel = totalForce / mass;
-
-        // Calculate new speed
-        speed += accel * dt;
-
-        // Apply steering
-        steerAngle = steerInput * maxSteerAngle;
-        wheelColliders[0].steerAngle = steerAngle;
-        wheelColliders[1].steerAngle = steerAngle;
-
-        // Calculate lateral force and apply it to wheels
-        /*float lateralForce = gripForce * steerInput;
-        wheelColliders[0].sidewaysFriction.stiffness = lateralForce / mass;
-        wheelColliders[1].sidewaysFriction.stiffness = lateralForce / mass;*/
-
-        // Apply forces to rigidbody
-        for (int i = 0; i < wheelColliders.Length; i++)
+    void FixedUpdate()
+    {
+        foreach (WheelCollider wheel in wheels)
         {
-            WheelHit hit;
-            if (wheelColliders[i].GetGroundHit(out hit))
-            {
-                Vector3 force = wheelColliders[i].transform.up * hit.force;
-                rigidbodys.AddForceAtPosition(force, hit.point);
-            }
+            wheel.motorTorque = motorTorque / wheels.Length;
+            wheel.brakeTorque = brakeTorque / wheels.Length;
+            wheel.steerAngle = steeringAngle;
         }
     }
 }
