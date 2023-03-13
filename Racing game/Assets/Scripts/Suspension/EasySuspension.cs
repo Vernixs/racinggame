@@ -1,9 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine;
+using TMPro;
+public enum GearState
+{
+	Neutral,
+	Running,
+	CheckingChange,
+	Changing
+};
 
+
+public class WheelColliders
+{
+	public WheelCollider FRWheel;
+	public WheelCollider LRWheel;
+	public WheelCollider RFWheel;
+	public WheelCollider LFWheel;
+}
+
+public class Wheelmesh
+{
+	public Wheelmesh FRWheel;
+	public Wheelmesh LRWheel;
+	public Wheelmesh RFWheel;
+	public Wheelmesh LFWheel;
+}
 [ExecuteInEditMode()]
 public class EasySuspension : MonoBehaviour {
-	[Range(0, 20)]
+	public WheelColliders colliders;
+	public Wheelmesh wheelMeshes;
+	
+
+		[Range(0, 20)]
 	public float naturalFrequency = 10;
 
 	[Range(0, 3)]
@@ -14,6 +43,10 @@ public class EasySuspension : MonoBehaviour {
 
 	public bool setSuspensionDistance = true;
 
+	void UpdateWheel(WheelCollider coll, MeshRenderer wheelMesh)
+    {
+
+    }
 	void Update () {
 		// work out the stiffness and damper parameters based on the better spring model
 		foreach (WheelCollider wc in GetComponentsInChildren<WheelCollider>()) {
@@ -37,7 +70,7 @@ public class EasySuspension : MonoBehaviour {
 
 // uncomment OnGUI to observe how parameters change
 
-/*
+
 	public void OnGUI()
 	{
 		foreach (WheelCollider wc in GetComponentsInChildren<WheelCollider>()) {
@@ -50,6 +83,6 @@ public class EasySuspension : MonoBehaviour {
 		GUILayout.Label ("Mass: " + rb.mass);
 		GUILayout.Label ("Center: " + rb.centerOfMass);
 	}
-*/
+
 
 }

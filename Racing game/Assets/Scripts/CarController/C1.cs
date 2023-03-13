@@ -24,11 +24,11 @@ public class C1 : MonoBehaviour
         carRigidbody = GetComponent<Rigidbody>();
         wheels = GetComponentsInChildren<WheelCollider>();
 
-       // foreach (WheelCollider wheel in wheels)
+        foreach (WheelCollider wheel in wheels)
         {
-           // wheel.radius = wheelRadius;
-           // wheel.forwardFriction.stiffness = wheelFriction;
-           // wheel.sidewaysFriction.stiffness = wheelFriction;
+           wheel.radius = wheelRadius;
+          // wheels.forwardFriction.stiffness = wheelFriction;
+          // wheels.sidewaysFriction.stiffness = wheelFriction;
         }
 
         carRigidbody.drag = drag;
