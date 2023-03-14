@@ -68,21 +68,10 @@ public class EasySuspension : MonoBehaviour {
 		}
 	}
 
-// uncomment OnGUI to observe how parameters change
 
 
-	public void OnGUI()
-	{
-		foreach (WheelCollider wc in GetComponentsInChildren<WheelCollider>()) {
-			GUILayout.Label (string.Format("{0} sprung: {1}, k: {2}, d: {3}", wc.name, wc.sprungMass, wc.suspensionSpring.spring, wc.suspensionSpring.damper));
-		}
 
-		var rb = GetComponent<Rigidbody> ();
 
-		GUILayout.Label ("Inertia: " + rb.inertiaTensor);
-		GUILayout.Label ("Mass: " + rb.mass);
-		GUILayout.Label ("Center: " + rb.centerOfMass);
-	}
 
 
 }
