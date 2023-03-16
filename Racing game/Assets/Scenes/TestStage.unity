@@ -1482,6 +1482,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a541b2aa7aabc8a4f8a43acf0c0ecf95, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  colliders:
+    FRWheel: {fileID: 1453326475}
+    FLWheel: {fileID: 2037440839}
+    BRWheel: {fileID: 13834928}
+    BLWheel: {fileID: 171527617}
+  wheelMeshes:
+    FRWheel: {fileID: 947119679}
+    FLWheel: {fileID: 0}
+    BRWheel: {fileID: 0}
+    BLWheel: {fileID: 0}
+  gasInput: 0
+  steeringInput: 0
+  motorPower: 0
+  steeringCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  brakePower: 0
+  slipAngle: 0
+  brakeInput: 0
   naturalFrequency: 10
   dampingRatio: 0.8
   forceShift: 0.03
