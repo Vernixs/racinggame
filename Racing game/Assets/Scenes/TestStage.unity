@@ -164,11 +164,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 1.35
   m_SuspensionSpring:
-    spring: 2006.1104
-    damper: 320.97766
+    spring: 2500
+    damper: 400
     targetPosition: 0.86
-  m_SuspensionDistance: 0.114069775
-  m_ForceAppPointDistance: 2.3890293
+  m_SuspensionDistance: 0.11406977
+  m_ForceAppPointDistance: 0.5150198
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -195,8 +195,8 @@ GameObject:
   - component: {fileID: 26743194}
   - component: {fileID: 26743193}
   - component: {fileID: 26743192}
-  - component: {fileID: 26743195}
   - component: {fileID: 26743196}
+  - component: {fileID: 26743191}
   m_Layer: 0
   m_Name: MainCamera
   m_TagString: MainCamera
@@ -204,6 +204,21 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!114 &26743191
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 26743190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7544e7646c95ff479ec02b12555ff0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1793822371}
+  Offset: {x: 0, y: 5, z: 0}
+  speed: 2
 --- !u!81 &26743192
 AudioListener:
   m_ObjectHideFlags: 0
@@ -262,28 +277,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 26743190}
-  m_LocalRotation: {x: 0.1642519, y: -0.0020729303, z: 0.0003451854, w: 0.9864162}
-  m_LocalPosition: {x: 0.1097517, y: 5.812291, z: -14.71525}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalRotation: {x: 0.11452571, y: -0.7070875, z: 0.117739834, w: 0.6877852}
+  m_LocalPosition: {x: 39.727104, y: 34.620667, z: -769.88794}
+  m_LocalScale: {x: 4.201557, y: 4.201556, z: 4.201557}
   m_Children: []
-  m_Father: {fileID: 1793822371}
-  m_RootOrder: 6
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &26743195
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 26743190}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35075586f8153124f865d9bbf4871a56, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  target: {fileID: 1793822371}
-  smoothing: 5
-  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &26743196
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -413,7 +413,7 @@ RectTransform:
   - {fileID: 993876936}
   - {fileID: 174437188}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -461,11 +461,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 1.35
   m_SuspensionSpring:
-    spring: 2117.5059
-    damper: 338.80093
+    spring: 2500
+    damper: 400
     targetPosition: 0.86
   m_SuspensionDistance: 0.11406977
-  m_ForceAppPointDistance: 2.3890293
+  m_ForceAppPointDistance: 0.5150198
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -643,7 +643,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &419155447
 GameObject:
@@ -814,7 +814,7 @@ Transform:
   m_LocalScale: {x: 1000, y: 1000, z: 1000}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &524240975
 GameObject:
@@ -880,7 +880,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &947119677
 GameObject:
@@ -908,8 +908,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 947119677}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 3.4859967, y: -0.5159696, z: 4.62}
   m_LocalScale: {x: 6.8, y: 1, z: 9.25}
   m_Children: []
   m_Father: {fileID: 1793822371}
@@ -1157,7 +1157,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1255612036
 GameObject:
@@ -1250,7 +1250,7 @@ Transform:
   m_LocalScale: {x: 0.75839, y: 0.75839, z: 0.75839}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &1278416099
 GameObject:
@@ -1281,7 +1281,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1793822371}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1278416101
 BoxCollider:
@@ -1337,11 +1337,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 1.19
   m_SuspensionSpring:
-    spring: 2882.3633
-    damper: 461.17807
+    spring: 2500
+    damper: 400
     targetPosition: 0.86
-  m_SuspensionDistance: 0.11406976
-  m_ForceAppPointDistance: 2.2290292
+  m_SuspensionDistance: 0.11406977
+  m_ForceAppPointDistance: 0.35501975
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:
@@ -1450,7 +1450,7 @@ Transform:
   m_LocalScale: {x: 53.321, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 45.862, y: 0, z: 0}
 --- !u!1 &1793822367
 GameObject:
@@ -1502,7 +1502,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   brakePower: 0
-  slipAngle: 0
+  slipAngle: 180
   brakeInput: 0
   naturalFrequency: 10
   dampingRatio: 0.8
@@ -1541,10 +1541,9 @@ Transform:
   - {fileID: 171527616}
   - {fileID: 1453326474}
   - {fileID: 348856218459290498}
-  - {fileID: 26743194}
   - {fileID: 1278416100}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: -91.345, z: 0}
 --- !u!1 &1890192317
 GameObject:
@@ -1662,11 +1661,11 @@ WheelCollider:
   m_Center: {x: 0, y: 0, z: 0}
   m_Radius: 1.19
   m_SuspensionSpring:
-    spring: 2994.0215
-    damper: 479.04343
+    spring: 2500
+    damper: 400
     targetPosition: 0.86
-  m_SuspensionDistance: 0.11406975
-  m_ForceAppPointDistance: 2.2290292
+  m_SuspensionDistance: 0.11406977
+  m_ForceAppPointDistance: 0.35501975
   m_Mass: 20
   m_WheelDampingRate: 0.25
   m_ForwardFriction:

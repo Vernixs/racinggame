@@ -14,7 +14,7 @@ public class CameraController : MonoBehaviour
         rigidbodyrb= player.GetComponent<Rigidbody>();  
     }
 
-    // Update is called once per frame
+    
     void LateUpdate()
     {
         Vector3 playerForward =  (rigidbodyrb.velocity+player.transform.forward).normalized;
