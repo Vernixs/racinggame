@@ -19,7 +19,7 @@ public class CarController : MonoBehaviour {
 	public float gasInput;
 	public float steeringInput;
     public float motorPower;
-    private float speed;
+    public float speed;
     private Rigidbody Rigidbodyrb;
     public AnimationCurve steeringCurve;
     public float brakePower;
@@ -29,6 +29,7 @@ public class CarController : MonoBehaviour {
     private void Start()
     {
         Rigidbodyrb= gameObject.GetComponent<Rigidbody>();
+        ApplyWheelPositions();
     }
     void Update()
     {
@@ -57,7 +58,7 @@ public class CarController : MonoBehaviour {
 
         Motor();
         CheckInput();
-        //ApplyWheelPositions();
+        
         Steering();
         Brake();
         
@@ -70,7 +71,7 @@ public class CarController : MonoBehaviour {
         slipAngle = Vector3.Angle(transform.forward, Rigidbodyrb.velocity-transform.forward);
         if (slipAngle < 120f)
         {
-            if (gasInput < 0 ) 
+            if (gasInput < 0 )  
             {
                 brakeInput = Mathf.Abs(gasInput);
                 gasInput = 0;
