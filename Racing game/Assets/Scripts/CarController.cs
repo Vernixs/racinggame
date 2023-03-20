@@ -29,7 +29,7 @@ public class CarController : MonoBehaviour {
     private void Start()
     {
         Rigidbodyrb= gameObject.GetComponent<Rigidbody>();
-        ApplyWheelPositions();
+        //ApplyWheelPositions();
     }
     void Update()
     {
@@ -116,7 +116,7 @@ public class CarController : MonoBehaviour {
         colliders.FRWheel.steerAngle = steeringAngle;
         colliders.FLWheel.steerAngle = steeringAngle;
     }
-   void ApplyWheelPositions()
+   /*void ApplyWheelPositions()
     {
         UpdateWheel(colliders.FRWheel, wheelMeshes.FRWheel);
         UpdateWheel(colliders.FLWheel, wheelMeshes.FLWheel);
@@ -130,7 +130,7 @@ public class CarController : MonoBehaviour {
 		coll.GetWorldPose(out position, out quat);
 		wheelMesh.transform.position = position;
 		wheelMesh.transform.rotation = quat;
-    }
+    }*/
 
 
     [Range(0, 20)]
