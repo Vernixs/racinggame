@@ -7,7 +7,12 @@ using UnityEngine.SceneManagement;
 
 public class SettingsMenu : MonoBehaviour
 {
-    Resolution[] resolutions;
+    public float maxCamDistance = 10f;
+    public float minCamFOV = 5f;
+    public float focSpeed = 1f;
+
+    public Transform target;
+   Resolution[] resolutions;
    public AudioMixer audioMixer;
    public Dropdown resolutionDropdown;
 
@@ -41,7 +46,7 @@ public class SettingsMenu : MonoBehaviour
     }
     public void SetVolume(float volume)
     {
-        AudioMixer.SetFloat("volume", volume);
+        //AudioMixer.SetFloat("volume", volume);
     }
 
     public void SetQuality(int qualityIndex)

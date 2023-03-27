@@ -5,16 +5,35 @@ using UnityEngine;
 
 public class Car : MonoBehaviour
 {
-    
-    void Start()
+    public Rigidbody sphereRB;
+    public float forwardAccel = 8f, reverseAccel = 4f, maxSpeed = 50f, turnStrenght = 180f;
+    private float speedInput, turnInput;
+
+    private void Start()
     {
-        Debug.Log(SlipAngleRear(100f, 1f, Vector3.up, Vector3.down));
+        sphereRB.transform.parent = null;
+    }
+    private void Update()
+    {
+        speedInput = 0f;
+        if(Input.GetAxis("Vertical") > 0)
+        {
+            speedInput = Input.GetAxis("Vertical") * forwardAccel * 10f;
+        }
+        else if (Input.GetAxis("Vertical") < 0)
+        {
+            speedInput = Input.GetAxis("Vertical") * reverseAccel * 10f;
+        }
+
+
+                transform.position = sphereRB.transform.position;
+    }
+    private void FixedUpdate()
+    {
+        if(Mathf.Abs(speedInput) > 0)
+        {
+            sphereRB.AddForce(transform.forward * speedInput);
+        }
     }
 
-   
-    float SlipAngleRear(float velocityLatitude, float velocityLongitude, Vector3 omega, Vector3 b)
-    {
-        return Mathf.Atan(velocityLatitude + Vector3.Dot(omega, b) / velocityLongitude);
-
-    }
 }
