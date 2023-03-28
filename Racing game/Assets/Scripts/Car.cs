@@ -6,8 +6,15 @@ using UnityEngine;
 public class Car : MonoBehaviour
 {
     public Rigidbody sphereRB;
-    public float forwardAccel = 8f, reverseAccel = 4f, maxSpeed = 50f, turnStrenght = 180f;
+    public float forwardAccel = 8f, reverseAccel = 4f, maxSpeed = 50f, turnStrenght = 180f, gravityForce = 10f, dragOnGround = 3f;
     private float speedInput, turnInput;
+    private bool grounded;
+    public LayerMask isGrounded;
+    public float groundRayLenght = .5f;
+    public Transform groundRayPoint;
+
+    public Transform leftFrontWheel, rightFrontWheel;
+    public float maxWheelTurn = 25f;
 
     private void Start()
     {
@@ -18,22 +25,55 @@ public class Car : MonoBehaviour
         speedInput = 0f;
         if(Input.GetAxis("Vertical") > 0)
         {
-            speedInput = Input.GetAxis("Vertical") * forwardAccel * 10f;
+            speedInput = Input.GetAxis("Vertical") * forwardAccel * 500f;
         }
         else if (Input.GetAxis("Vertical") < 0)
         {
-            speedInput = Input.GetAxis("Vertical") * reverseAccel * 10f;
+            speedInput = Input.GetAxis("Vertical") * reverseAccel * 500f;
         }
 
+        turnInput = Input.GetAxis("Horizontal");
 
-                transform.position = sphereRB.transform.position;
+        if(grounded)
+        {
+            transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, turnInput * turnStrenght * Time.deltaTime * Input.GetAxis("Vertical"), 0f));
+
+
+        }
+
+        leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 180, leftFrontWheel.localRotation.eulerAngles.z);
+        rightFrontWheel.localRotation = Quaternion.Euler(rightFrontWheel.localRotation.eulerAngles.x, turnInput * maxWheelTurn, rightFrontWheel.localRotation.eulerAngles.z);
+
+        transform.position = sphereRB.transform.position;
     }
     private void FixedUpdate()
     {
-        if(Mathf.Abs(speedInput) > 0)
+        grounded = false;
+        RaycastHit hit;
+
+        if(Physics.Raycast(groundRayPoint.position, -transform.up, out hit, groundRayLenght, isGrounded))
         {
-            sphereRB.AddForce(transform.forward * speedInput);
+            grounded = true;
+
+            transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
         }
+
+        if(grounded)
+        {
+            sphereRB.drag = dragOnGround;
+
+            if(Mathf.Abs(speedInput) > 0)
+            {
+                sphereRB.AddForce(transform.forward * speedInput);
+            }
+        }
+        else
+        {
+            sphereRB.drag = 0.1f;
+
+            sphereRB.AddForce(Vector3.up * -gravityForce * 100f);
+        }
+        
     }
 
 }
