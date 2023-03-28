@@ -10,9 +10,8 @@ public class Car : MonoBehaviour
     private float speedInput, turnInput;
     private bool grounded;
     public LayerMask isGrounded;
-    public float groundRayLenght = .5f;
+    public float groundRayLenght = 100f;
     public Transform groundRayPoint;
-
     public Transform leftFrontWheel, rightFrontWheel;
     public float maxWheelTurn = 25f;
 
@@ -25,34 +24,37 @@ public class Car : MonoBehaviour
         speedInput = 0f;
         if(Input.GetAxis("Vertical") > 0)
         {
-            speedInput = Input.GetAxis("Vertical") * forwardAccel * 500f;
+            
+            speedInput = Input.GetAxis("Vertical") * forwardAccel * 2000f;
         }
         else if (Input.GetAxis("Vertical") < 0)
         {
-            speedInput = Input.GetAxis("Vertical") * reverseAccel * 500f;
+            speedInput = Input.GetAxis("Vertical") * reverseAccel * 2000f;
         }
 
         turnInput = Input.GetAxis("Horizontal");
 
-        if(grounded)
-        {
-            transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, turnInput * turnStrenght * Time.deltaTime * Input.GetAxis("Vertical"), 0f));
+        
 
+        
+            
+        transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, turnInput * turnStrenght * Time.deltaTime * Input.GetAxis("Vertical"), 0f));
 
-        }
+        
 
-        leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 180, leftFrontWheel.localRotation.eulerAngles.z);
-        rightFrontWheel.localRotation = Quaternion.Euler(rightFrontWheel.localRotation.eulerAngles.x, turnInput * maxWheelTurn, rightFrontWheel.localRotation.eulerAngles.z);
+        leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 90, leftFrontWheel.localRotation.eulerAngles.z);
+        rightFrontWheel.localRotation = Quaternion.Euler(rightFrontWheel.localRotation.eulerAngles.x, turnInput * maxWheelTurn - 90, rightFrontWheel.localRotation.eulerAngles.z);
 
         transform.position = sphereRB.transform.position;
     }
     private void FixedUpdate()
     {
-        grounded = false;
+       grounded = false;
         RaycastHit hit;
 
         if(Physics.Raycast(groundRayPoint.position, -transform.up, out hit, groundRayLenght, isGrounded))
         {
+            
             grounded = true;
 
             transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
