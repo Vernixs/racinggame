@@ -6,7 +6,7 @@ public class enableRacing : MonoBehaviour
 {
     void Update()
     {
-        GameObject.FindWithTag("Player");
+        
 
     }
 }
