@@ -17,12 +17,6 @@ public class Car : MonoBehaviour
     public Transform leftFrontWheel, rightFrontWheel;
     public float maxWheelTurn = 25f;
 
-    private void Awake()
-    {
-        controls = new ControllerInput();
-
-        //controls.Gameplay.Startmenu.performed += ctx => Menu();
-    }
     private void Start()
     {
         sphereRB.transform.parent = null;

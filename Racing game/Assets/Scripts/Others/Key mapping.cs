@@ -4,15 +4,13 @@ using UnityEngine;
 
 public class Keymapping : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    void OnGUI()
     {
-        
+        Event e = Event.current;
+        if (e.isKey)
+        {
+            Debug.Log("Detected key code: " + e.keyCode);
+        }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

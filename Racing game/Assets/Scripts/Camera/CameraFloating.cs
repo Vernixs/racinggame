@@ -29,8 +29,8 @@ public class CameraFloating : MonoBehaviour
         transform.localPosition = Vector3.Lerp(transform.localPosition, targetPosition, Time.deltaTime * floatDamping);
 
         // Update the horizontal and vertical offsets based on time and speed
-        horizontalOffset = Mathf.Sin(Time.time * horizontalSpeed) * maxHorizontalOffset;
-        verticalOffset = Mathf.Cos(Time.time * verticalSpeed) * maxVerticalOffset;
+        horizontalOffset = Mathf.Cos(Time.time * horizontalSpeed) * maxHorizontalOffset;
+        verticalOffset = Mathf.Sin(Time.time * verticalSpeed) * maxVerticalOffset;
     }
 }
 
