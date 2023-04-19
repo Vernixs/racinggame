@@ -21,7 +21,7 @@ public class Car : MonoBehaviour
     {
         controls = new ControllerInput();
 
-        controls.Gameplay.Startmenu.performed += ctx => Menu();
+        //controls.Gameplay.Startmenu.performed += ctx => Menu();
     }
     private void Start()
     {
