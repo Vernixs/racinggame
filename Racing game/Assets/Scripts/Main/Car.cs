@@ -1,10 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class Car : MonoBehaviour
 {
+    ControllerInput controls;
     public Rigidbody sphereRB;
     public float forwardAccel = 8f, reverseAccel = 4f, maxSpeed = 50f, turnStrenght = 180f, gravityForce = 10f, dragOnGround = 3f;
     private float speedInput, turnInput;
@@ -15,6 +17,12 @@ public class Car : MonoBehaviour
     public Transform leftFrontWheel, rightFrontWheel;
     public float maxWheelTurn = 25f;
 
+    private void Awake()
+    {
+        controls = new ControllerInput();
+
+        //controls.Gameplay.Startmenu.performed += ctx => Menu();
+    }
     private void Start()
     {
         sphereRB.transform.parent = null;
