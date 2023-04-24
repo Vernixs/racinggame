@@ -177,7 +177,7 @@ GameObject:
   - component: {fileID: 3736603329083986604}
   - component: {fileID: 4075973453371901973}
   - component: {fileID: 4075973453371901972}
-  - component: {fileID: 4976310974701101610}
+  - component: {fileID: 187409540707667271}
   m_Layer: 0
   m_Name: Truck 1
   m_TagString: Untagged
@@ -255,7 +255,7 @@ MonoBehaviour:
   SceneMigrationSynchronization: 1
   DontDestroyWithOwner: 0
   AutoObjectParentSync: 1
---- !u!114 &4976310974701101610
+--- !u!114 &187409540707667271
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -264,7 +264,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 4075973453371901974}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e96cb6065543e43c4a752faaa1468eb1, type: 3}
+  m_Script: {fileID: 11500000, guid: df2868252ab5c4d1da357e8f11f1b524, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   SyncPositionX: 1
@@ -585,7 +585,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4499924156269540464}
-  m_LocalRotation: {x: 0.07540675, y: -0.0041357274, z: 0.000312753, w: 0.9971442}
+  m_LocalRotation: {x: 0.07540677, y: -0.0041357274, z: 0.000312753, w: 0.9971442}
   m_LocalPosition: {x: -0.338, y: 3.634, z: -13.178}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
