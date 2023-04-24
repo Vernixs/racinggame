@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 
-public class Car : MonoBehaviour
+public class Car : NetworkBehaviour
 {
+    
+
     ControllerInput controls;
     public Rigidbody sphereRB;
     public float forwardAccel = 8f, reverseAccel = 4f, maxSpeed = 50f, turnStrenght = 180f, gravityForce = 10f, dragOnGround = 3f;

@@ -7,12 +7,12 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayButton()
     {
-        SceneManager.LoadScene(2);
+        SceneManager.LoadScene(1);
     }
 
     public void OptionsButton()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(2);
     }
 
     public void ExitGame()
