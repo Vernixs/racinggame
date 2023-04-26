@@ -6,7 +6,7 @@ using UnityEngine;
 public class Car : MonoBehaviour
 {
     public Rigidbody sphereRB;
-    public float forwardAccel = 8f, reverseAccel = 4f, maxSpeed = 50f, turnStrenght = 180f, gravityForce = 10f, dragOnGround = 3f;
+    public float forwardAccel, reverseAccel, maxSpeed, turnStrenght = 180f, gravityForce = 10f, dragOnGround = 3f;
     private float speedInput, turnInput;
     private bool grounded;
     public LayerMask isGrounded;
@@ -15,6 +15,7 @@ public class Car : MonoBehaviour
     public Transform leftFrontWheel, rightFrontWheel;
     public float maxWheelTurn = 25f;
 
+    //Acceleration and Max Speed
     private void Start()
     {
         sphereRB.transform.parent = null;
@@ -25,7 +26,7 @@ public class Car : MonoBehaviour
         if(Input.GetAxis("Vertical") > 0)
         {
             
-            speedInput = Input.GetAxis("Vertical") * forwardAccel * 2000f;
+            speedInput = Input.GetAxis("Vertical") + forwardAccel;
         }
         else if (Input.GetAxis("Vertical") < 0)
         {
@@ -34,9 +35,15 @@ public class Car : MonoBehaviour
 
         turnInput = Input.GetAxis("Horizontal");
 
-        
+       if (forwardAccel == maxSpeed)
+        {
+            forwardAccel = maxSpeed;
+            Debug.Log(speedInput);
+        }
 
         
+
+        //Turning 
             
         transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, turnInput * turnStrenght * Time.deltaTime * Input.GetAxis("Vertical"), 0f));
 
