@@ -27,23 +27,23 @@ public class Car : NetworkBehaviour
     private void Update()
     {
         speedInput = 0f;
-        if(Input.GetAxis("Vertical") > 0)
+        float input = Input.GetAxis("Vertical");
+        if(input > 0)
         {
             acceleration += forwardAccel;
             speedInput = Input.GetAxis("Vertical") * forwardAccel * acceleration;
         }
-        else if (Input.GetAxis("Vertical") < 0)
+        else if (input < 0)
         {
-            speedInput = Input.GetAxis("Vertical") * reverseAccel * 2000f;
+            speedInput = Input.GetAxis("Vertical") * reverseAccel * 500f;
+        }
+        else if (!input)
+        {
+            
         }
 
         turnInput = Input.GetAxis("Horizontal");
 
-        if(acceleration == 100)
-        {
-            forwardAccel = 0;
-            Debug.Log(acceleration);
-        }
 
         
             
