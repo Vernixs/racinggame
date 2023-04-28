@@ -11,7 +11,7 @@ public class Car : NetworkBehaviour
 
     ControllerInput controls;
     public Rigidbody sphereRB;
-    public float forwardAccel = 8f, reverseAccel = 4f, maxSpeed = 50f, turnStrenght = 180f, gravityForce = 10f, dragOnGround = 3f;
+    public float forwardAccel = 8f, reverseAccel = 4f, maxSpeed = 50f, turnStrenght = 180f, gravityForce = 10f, dragOnGround = 3f, acceleration;
     private float speedInput, turnInput;
     private bool grounded;
     public LayerMask isGrounded;
@@ -29,8 +29,8 @@ public class Car : NetworkBehaviour
         speedInput = 0f;
         if(Input.GetAxis("Vertical") > 0)
         {
-            
-            speedInput = Input.GetAxis("Vertical") * forwardAccel * 2000f;
+            acceleration += forwardAccel;
+            speedInput = Input.GetAxis("Vertical") * forwardAccel * acceleration;
         }
         else if (Input.GetAxis("Vertical") < 0)
         {
@@ -39,7 +39,11 @@ public class Car : NetworkBehaviour
 
         turnInput = Input.GetAxis("Horizontal");
 
-        
+        if(acceleration == 100)
+        {
+            forwardAccel = 0;
+            Debug.Log(acceleration);
+        }
 
         
             
