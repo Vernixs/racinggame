@@ -26,7 +26,7 @@ public class Car : MonoBehaviour
         if(Input.GetAxis("Vertical") > 0)
         {
             
-            speedInput = Input.GetAxis("Vertical") + forwardAccel;
+            speedInput = Input.GetAxis("Vertical") + forwardAccel * 2000f;
         }
         else if (Input.GetAxis("Vertical") < 0)
         {
