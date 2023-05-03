@@ -10,6 +10,11 @@ public class LapCounter : MonoBehaviour
 
     private int currentLap = 1; // Current lap count
 
+    private void Update()
+    {
+        
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -17,6 +22,7 @@ public class LapCounter : MonoBehaviour
             Debug.Log("1Time");
             if (currentLap <= numLaps)
             {
+                Debug.Log("next lap");
                 currentLap++;
                 lapText.text = currentLap.ToString() + "0/3" + numLaps.ToString();
             }

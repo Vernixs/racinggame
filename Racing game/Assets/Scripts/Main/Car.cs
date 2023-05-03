@@ -44,7 +44,7 @@ public class Car : MonoBehaviour
        if (forwardAccel == maxSpeed)
         {
             forwardAccel = maxSpeed;
-            Debug.Log(speedInput);
+            //Debug.Log(speedInput);
         }
 
         //Turning 
