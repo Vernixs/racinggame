@@ -37,9 +37,10 @@ public class Car : NetworkBehaviour
         {
             speedInput = Input.GetAxis("Vertical") * reverseAccel * 500f;
         }
-        else if (!input)
+        else if (input >= 100)
         {
-            
+            acceleration = 0f;
+            forwardAccel = 0f;
         }
 
         turnInput = Input.GetAxis("Horizontal");
