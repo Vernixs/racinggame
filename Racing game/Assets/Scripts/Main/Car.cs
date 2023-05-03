@@ -9,15 +9,21 @@ public class Car : MonoBehaviour
     public float forwardAccel, reverseAccel, maxSpeed, turnStrenght = 180f, gravityForce = 10f, dragOnGround = 3f;
     private float speedInput, turnInput;
     private bool grounded;
+    private bool isBraking;
     public LayerMask isGrounded;
     public float groundRayLenght = 100f;
     public Transform groundRayPoint;
     public Transform leftFrontWheel, rightFrontWheel;
     public float maxWheelTurn = 25f;
+    public float brakeForce = 1000f; 
+
+
+
 
     //Acceleration and Max Speed
     private void Start()
     {
+       
         sphereRB.transform.parent = null;
     }
     private void Update()
@@ -41,10 +47,8 @@ public class Car : MonoBehaviour
             Debug.Log(speedInput);
         }
 
-        
-
         //Turning 
-            
+
         transform.rotation = Quaternion.Euler(transform.eulerAngles + new Vector3(0f, turnInput * turnStrenght * Time.deltaTime * Input.GetAxis("Vertical"), 0f));
 
         
@@ -53,6 +57,9 @@ public class Car : MonoBehaviour
         rightFrontWheel.localRotation = Quaternion.Euler(rightFrontWheel.localRotation.eulerAngles.x, turnInput * maxWheelTurn - 90, rightFrontWheel.localRotation.eulerAngles.z);
 
         transform.position = sphereRB.transform.position;
+
+
+
     }
     private void FixedUpdate()
     {
