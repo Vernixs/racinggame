@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class LapCounter : MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class LapCounter : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Player"))
+        if (other.tag == "Player")
         {
             Debug.Log("1Time");
             if (currentLap <= numLaps)
@@ -25,6 +26,10 @@ public class LapCounter : MonoBehaviour
                 Debug.Log("next lap");
                 currentLap++;
                 lapText.text = currentLap.ToString() + "0/3" + numLaps.ToString();
+            }
+            else
+            {
+                SceneManager.LoadScene(0);
             }
         }
     }
