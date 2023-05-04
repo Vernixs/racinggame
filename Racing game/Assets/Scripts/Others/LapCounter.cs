@@ -21,7 +21,7 @@ public class LapCounter : MonoBehaviour
         if (other.tag == "Player")
         {
             Debug.Log("1Time");
-            if (currentLap <= numLaps)
+            if (currentLap != numLaps)
             {
                 Debug.Log("next lap");
                 currentLap++;
@@ -33,4 +33,7 @@ public class LapCounter : MonoBehaviour
             }
         }
     }
+
 }
+
+
