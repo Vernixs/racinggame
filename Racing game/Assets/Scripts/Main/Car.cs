@@ -15,7 +15,7 @@ public class Car : MonoBehaviour
     public Transform groundRayPoint;
     public Transform leftFrontWheel, rightFrontWheel;
     private float maxWheelTurn = 25f;
-    private float brakeForce = 1000f;
+    public float brakeForce = 1000f;
     public float speed = 5f;
 
     public float maxSpeed = 100f;
@@ -34,22 +34,24 @@ public class Car : MonoBehaviour
 
     private void Update()
     {
-
-
-        speedInput = 0f;
-        if (Input.GetAxis("Vertical") > 0)
+        speedInput = Input.GetAxis("Vertical");
+        if (speedInput > 0)
         {
             if (speed < maxSpeed)
             {
                 speed += forwardAccel * Time.deltaTime;
-
             }
-
             else
             {
                 speed = maxSpeed;
             }
-
+        }
+        else if (speedInput <0)
+        {
+            if (speed > 0)
+            {
+                speed -= brakeForce * Time.deltaTime;
+            }
         }
         else
         {
@@ -60,6 +62,7 @@ public class Car : MonoBehaviour
         }
 
         turnInput = Input.GetAxis("Horizontal");
+        turnInput = turnInput * (speed / maxSpeed);
 
 
         //Turning 
@@ -71,6 +74,7 @@ public class Car : MonoBehaviour
         leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 90, leftFrontWheel.localRotation.eulerAngles.z);
         rightFrontWheel.localRotation = Quaternion.Euler(rightFrontWheel.localRotation.eulerAngles.x, turnInput * maxWheelTurn - 90, rightFrontWheel.localRotation.eulerAngles.z);
 
+        sphereRB.velocity = speed * transform.forward;
         transform.position = sphereRB.transform.position;
 
 

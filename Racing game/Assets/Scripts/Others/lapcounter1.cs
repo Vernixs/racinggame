@@ -13,7 +13,7 @@ public class lapcounter1 : MonoBehaviour
 
     private void Start()
     {
-        LapNumberText.text = "0";
+        LapNumberText.text = LapNumber.ToString();
         TotalLapsText.text = "/" + TotalLaps.ToString();
     }
 
