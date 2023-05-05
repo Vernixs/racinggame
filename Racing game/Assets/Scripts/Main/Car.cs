@@ -6,16 +6,20 @@ using UnityEngine;
 public class Car : MonoBehaviour
 {
     public Rigidbody sphereRB;
-    public float forwardAccel, reverseAccel, maxSpeed, turnStrenght = 180f, gravityForce = 10f, dragOnGround = 3f;
+    private float reverseAccel, turnStrenght = 180f, gravityForce = 10f, dragOnGround = 3f;
     private float speedInput, turnInput;
     private bool grounded;
     private bool isBraking;
     public LayerMask isGrounded;
-    public float groundRayLenght = 100f;
+    private float groundRayLenght = 100f;
     public Transform groundRayPoint;
     public Transform leftFrontWheel, rightFrontWheel;
-    public float maxWheelTurn = 25f;
-    public float brakeForce = 1000f; 
+    private float maxWheelTurn = 25f;
+    private float brakeForce = 1000f;
+    public float speed = 5f;
+
+    public float maxSpeed = 100f;
+    public float forwardAccel = 0.9f;
 
 
 
@@ -26,26 +30,37 @@ public class Car : MonoBehaviour
        
         sphereRB.transform.parent = null;
     }
+
+
     private void Update()
     {
+
+
         speedInput = 0f;
-        if(Input.GetAxis("Vertical") > 0)
+        if (Input.GetAxis("Vertical") > 0)
         {
-            
-            speedInput = Input.GetAxis("Vertical") + forwardAccel * 2000f;
+            if (speed < maxSpeed)
+            {
+                speed += forwardAccel * Time.deltaTime;
+
+            }
+
+            else
+            {
+                speed = maxSpeed;
+            }
+
         }
-        else if (Input.GetAxis("Vertical") < 0)
+        else
         {
-            speedInput = Input.GetAxis("Vertical") * reverseAccel * 2000f;
+            if(speed > 0)
+            {
+                speed -= forwardAccel * Time.deltaTime;
+            }
         }
 
         turnInput = Input.GetAxis("Horizontal");
 
-       if (forwardAccel == maxSpeed)
-        {
-            forwardAccel = maxSpeed;
-            //Debug.Log(speedInput);
-        }
 
         //Turning 
 
@@ -61,6 +76,8 @@ public class Car : MonoBehaviour
 
 
     }
+
+
     private void FixedUpdate()
     {
        grounded = false;

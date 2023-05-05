@@ -4,5 +4,8 @@ using UnityEngine;
 
 public class checkpointCounter : MonoBehaviour
 {
-    
+    private void OnTriggerEnter(Collider other)
+    {
+        
+    }
 }

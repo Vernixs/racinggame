@@ -6,15 +6,27 @@ using UnityEngine.UI;
 public class lapcounter1 : MonoBehaviour
 {
     public float numLaps = 3f;
-    public Text texts;
+    public Text LapNumberText;
+    public Text TotalLapsText;
+    public int TotalLaps = 3;
+    public static int LapNumber;
 
-    float startingLap = 0f;
+    private void Start()
+    {
+        LapNumberText.text = "0";
+        TotalLapsText.text = "/" + TotalLaps.ToString();
+    }
+
+    private void Update()
+    {
+        LapNumberText.text = LapNumber.ToString();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+      if(other.gameObject.CompareTag("Player"))
         {
-            startingLap += 1;
-            texts.text = startingLap.ToString();
+            LapNumber++;
         }
     }
 }
