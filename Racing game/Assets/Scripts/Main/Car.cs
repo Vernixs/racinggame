@@ -64,6 +64,17 @@ public class Car : MonoBehaviour
         turnInput = Input.GetAxis("Horizontal");
         turnInput = turnInput * (speed / maxSpeed);
 
+        float latSpeed = 0;
+
+        if (turnInput > 0)
+        {
+            latSpeed = -CalculateCentripedalForce(speed, 70f, 10000f);
+        }
+        else if (turnInput < 0)
+        {
+            latSpeed = CalculateCentripedalForce(speed, 70f, 10000f);
+
+        }
 
         //Turning 
 
@@ -74,7 +85,8 @@ public class Car : MonoBehaviour
         leftFrontWheel.localRotation = Quaternion.Euler(leftFrontWheel.localRotation.eulerAngles.x, (turnInput * maxWheelTurn) - 90, leftFrontWheel.localRotation.eulerAngles.z);
         rightFrontWheel.localRotation = Quaternion.Euler(rightFrontWheel.localRotation.eulerAngles.x, turnInput * maxWheelTurn - 90, rightFrontWheel.localRotation.eulerAngles.z);
 
-        sphereRB.velocity = speed * transform.forward;
+        sphereRB.velocity = (speed * transform.forward) + (latSpeed * transform.right);
+
         transform.position = sphereRB.transform.position;
 
 
@@ -111,6 +123,22 @@ public class Car : MonoBehaviour
             sphereRB.AddForce(Vector3.up * -gravityForce * 100f);
         }
         
+    }
+
+    public float CalculateCentripedalForce(float speed, float weight, float radius)
+    {
+
+        //convert kmh to meter per second
+        float speedInMeter = speed * 1000.0f * (1.0f / 3600.0f);
+
+        //centripedal acceleration in meter per second squared
+        float cA = (speedInMeter * speedInMeter) / radius;
+
+        //centripedal force in newton
+        float cF = weight * cA;
+
+        return cF;
+
     }
 
 }
