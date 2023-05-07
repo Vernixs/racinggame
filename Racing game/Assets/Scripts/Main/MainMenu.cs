@@ -7,13 +7,15 @@ using TMPro;
 public class MainMenu : MonoBehaviour
 {
     public GameObject panel;
+    public GameObject mainMenu;
     void start()
     {
         panel.SetActive(false);
     }
     public void PlayButton()
     {
-        SceneManager.LoadScene(0);
+        panel.SetActive(true);
+        mainMenu.SetActive(false);
     }
 
     public void OptionsButton()
@@ -28,6 +30,12 @@ public class MainMenu : MonoBehaviour
     }
 
     public void BackButton()
+    {
+        panel.SetActive(false);
+        mainMenu.SetActive(true);
+    }
+
+    public void trackButton()
     {
         SceneManager.LoadScene(0);
     }
