@@ -8,6 +8,7 @@ public class MainMenu : MonoBehaviour
 {
     public GameObject panel;
     public GameObject mainMenu;
+    public GameObject optionsMenu;
     void start()
     {
         panel.SetActive(false);
@@ -20,7 +21,7 @@ public class MainMenu : MonoBehaviour
 
     public void OptionsButton()
     {
-        SceneManager.LoadScene(1);
+        optionsMenu.SetActive(true);
     }
 
     public void ExitGame()
