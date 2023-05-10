@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -33,6 +34,11 @@ public class PauseMenu : MonoBehaviour
         pausePanel.SetActive(false);
         Time.timeScale = 1;
         dialogue.SetActive(true);
+    }
+
+    public void mainMenu()
+    {
+        SceneManager.LoadScene(1);
     }
 
 }
