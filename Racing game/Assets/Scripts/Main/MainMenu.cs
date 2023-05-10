@@ -16,7 +16,7 @@ public class MainMenu : MonoBehaviour
     public void PlayButton()
     {
         panel.SetActive(true);
-        mainMenu.SetActive(false);
+       
     }
 
     public void OptionsButton()
@@ -34,6 +34,7 @@ public class MainMenu : MonoBehaviour
     {
         panel.SetActive(false);
         mainMenu.SetActive(true);
+        optionsMenu.SetActive(false);
     }
 
     public void trackButton()
