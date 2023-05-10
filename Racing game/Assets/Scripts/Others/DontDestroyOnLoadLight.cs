@@ -18,7 +18,7 @@ public class DontDestroyOnLoadLight : MonoBehaviour
             // Attach a light component to the game object
             Light lightComponent = lightGameObject.AddComponent<Light>();
             lightComponent.type = LightType.Directional;
-            lightComponent.intensity = 1.0f;
+            lightComponent.intensity = 0.01f;
             lightComponent.color = Color.white;
         }
         else
