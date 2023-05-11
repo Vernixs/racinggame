@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class Car : MonoBehaviour
@@ -22,19 +23,34 @@ public class Car : MonoBehaviour
     public float forwardAccel = 0.9f;
 
 
-
+    public InputActionAsset inputActions;
+    InputActionMap gameplayActionMap;
+    InputAction steeringAngle;
+    InputAction accelerationcontrols;
 
     //Acceleration and Max Speed
+
+    private void Awake()
+    {
+        gameplayActionMap = inputActions.FindActionMap("Movement");
+
+        steeringAngle = gameplayActionMap.FindAction("Steeringangle");
+        accelerationcontrols = gameplayActionMap.FindAction("Acceleration");
+
+        steeringAngle.performed += ctx =>  = ctx.ReadValue<float>();
+        accelerationcontrols.performed += ctx => speedInput = ctx.ReadValue<float>();
+        accelerationcontrols.canceled += ctx => speedInput = 0f;
+    }
     private void Start()
     {
        
         sphereRB.transform.parent = null;
     }
 
-
     private void Update()
     {
-        speedInput = Input.GetAxis("Vertical");
+        
+        //speedInput = Input.GetAxis("Vertical");
         if (speedInput > 0)
         {
             if (speed < maxSpeed)
@@ -61,7 +77,7 @@ public class Car : MonoBehaviour
             }
         }
 
-        turnInput = Input.GetAxis("Horizontal");
+        //turnInput = Input.GetAxis("Horizontal");
         turnInput = turnInput * (speed / maxSpeed);
 
         float latSpeed = 0;
