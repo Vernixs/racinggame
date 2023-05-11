@@ -31,16 +31,26 @@ public class Keyrebinding : MonoBehaviour
     [SerializeField]
     Button resetButton;
 
-    private void OnEnable()
+   /* private void OnEnable()
     {
         rebindButton.onClick.AddListener(() => DoRebind());
         resetButton.onClick.AddListener(() => ResetBinding());
 
         if(inputActionReference != null)
         {
+            InputManager.LoadBindingOverride(actionName);
             GetBindingInfo();
             UpdateGUI();
         }
+
+        InputManager.rebindComplete += UpdateGUI;
+        InputManager.rebindCanceled += UpdateGUI;
+    }
+
+    private void OnDisable()
+    {
+        InputManager.rebindComplete -= UpdateGUI;
+        InputManager.rebindCanceled -= UpdateGUI;
     }
     private void OnValidate()
     {
@@ -75,7 +85,7 @@ public class Keyrebinding : MonoBehaviour
         {
             if(Application.isPlaying)
             {
-
+                rebindText.text = InputManager.GetBindingName(actionName, bindingIndex);
             }
             else
             {
@@ -86,11 +96,11 @@ public class Keyrebinding : MonoBehaviour
 
     void DoRebind()
     {
-
+        InputManager.StartRebind(actionName, bindingIndex, rebindText, excludeMouse);
     }
 
     void ResetBinding()
     {
 
-    }
+    }*/
 }
