@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pausePanel;
     public GameObject dialogue;
+    
     private void Start()
     {
         pausePanel.SetActive(false);
@@ -36,7 +37,7 @@ public class PauseMenu : MonoBehaviour
         dialogue.SetActive(true);
     }
 
-    public void mainMenu()
+    public void MainMenu()
     {
         SceneManager.LoadScene(1);
     }
