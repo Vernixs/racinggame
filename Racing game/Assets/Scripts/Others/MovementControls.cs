@@ -19,7 +19,7 @@ public class @MovementControls : IInputActionCollection, IDisposable
             ""id"": ""aed5c460-83d4-427c-bf8e-35e232a42cc3"",
             ""actions"": [
                 {
-                    ""name"": ""Acceleration"",
+                    ""name"": ""Accelerate"",
                     ""type"": ""Button"",
                     ""id"": ""7298fa84-0ba3-4e66-b487-0289b16190b2"",
                     ""expectedControlType"": ""Button"",
@@ -27,9 +27,25 @@ public class @MovementControls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Steeringangle"",
+                    ""name"": ""Brake"",
                     ""type"": ""Button"",
-                    ""id"": ""de1c71d5-7298-4a76-95b4-dbfb4999a6cd"",
+                    ""id"": ""e90d2139-1202-4e19-b30e-e3c83828c88b"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""LeftTurn"",
+                    ""type"": ""Button"",
+                    ""id"": ""79dcc2dd-5cd6-43c8-9be7-51c235922fe7"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RightTurn"",
+                    ""type"": ""Button"",
+                    ""id"": ""ba6c5cce-c2f3-49aa-ad25-28bc1a89fd5e"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
@@ -37,101 +53,46 @@ public class @MovementControls : IInputActionCollection, IDisposable
             ],
             ""bindings"": [
                 {
-                    ""name"": ""Keyaccel"",
-                    ""id"": ""2b791ca9-992c-4489-9892-d05a3caa58cb"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Acceleration"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""138729dc-6bb7-4ec0-b05e-2e905aea3e59"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Acceleration"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""a35775d8-60ea-40ee-87d4-eb14195bd8b8"",
+                    ""name"": """",
+                    ""id"": ""d9a24a3c-6afd-489b-bc72-d25726c69821"",
                     ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Acceleration"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""3f6d3ec5-41b0-49e8-a82f-b280e1c1e7ca"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Acceleration"",
+                    ""action"": ""Accelerate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2b6c3efd-b182-4391-a6b0-cd6c1e1fa1fd"",
-                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""id"": ""fcff0a5e-7d87-4ded-bf43-ba6ebd5f3cf8"",
+                    ""path"": ""<Keyboard>/s"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steeringangle"",
+                    ""action"": ""Brake"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""1D Axis"",
-                    ""id"": ""b3abfe9f-3afe-45ed-93f3-07e2c38eb5da"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Steeringangle"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""2e60c7b1-61c8-4e17-82be-34cf88b870da"",
+                    ""name"": """",
+                    ""id"": ""042c28b7-af32-41f5-b044-b9687a3420d7"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steeringangle"",
+                    ""action"": ""LeftTurn"",
                     ""isComposite"": false,
-                    ""isPartOfComposite"": true
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""positive"",
-                    ""id"": ""ea2705ed-dfbb-4fae-a065-4d4ef80a546e"",
+                    ""name"": """",
+                    ""id"": ""680da389-32bb-4691-b0a1-f586bb1f144b"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Steeringangle"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""64c4dbd5-e481-4721-94aa-da5abed5bfe9"",
-                    ""path"": ""<Gamepad>/rightStick/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Steeringangle"",
+                    ""action"": ""RightTurn"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -142,8 +103,10 @@ public class @MovementControls : IInputActionCollection, IDisposable
 }");
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
-        m_Movement_Acceleration = m_Movement.FindAction("Acceleration", throwIfNotFound: true);
-        m_Movement_Steeringangle = m_Movement.FindAction("Steeringangle", throwIfNotFound: true);
+        m_Movement_Accelerate = m_Movement.FindAction("Accelerate", throwIfNotFound: true);
+        m_Movement_Brake = m_Movement.FindAction("Brake", throwIfNotFound: true);
+        m_Movement_LeftTurn = m_Movement.FindAction("LeftTurn", throwIfNotFound: true);
+        m_Movement_RightTurn = m_Movement.FindAction("RightTurn", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -193,14 +156,18 @@ public class @MovementControls : IInputActionCollection, IDisposable
     // Movement
     private readonly InputActionMap m_Movement;
     private IMovementActions m_MovementActionsCallbackInterface;
-    private readonly InputAction m_Movement_Acceleration;
-    private readonly InputAction m_Movement_Steeringangle;
+    private readonly InputAction m_Movement_Accelerate;
+    private readonly InputAction m_Movement_Brake;
+    private readonly InputAction m_Movement_LeftTurn;
+    private readonly InputAction m_Movement_RightTurn;
     public struct MovementActions
     {
         private @MovementControls m_Wrapper;
         public MovementActions(@MovementControls wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Acceleration => m_Wrapper.m_Movement_Acceleration;
-        public InputAction @Steeringangle => m_Wrapper.m_Movement_Steeringangle;
+        public InputAction @Accelerate => m_Wrapper.m_Movement_Accelerate;
+        public InputAction @Brake => m_Wrapper.m_Movement_Brake;
+        public InputAction @LeftTurn => m_Wrapper.m_Movement_LeftTurn;
+        public InputAction @RightTurn => m_Wrapper.m_Movement_RightTurn;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -210,29 +177,43 @@ public class @MovementControls : IInputActionCollection, IDisposable
         {
             if (m_Wrapper.m_MovementActionsCallbackInterface != null)
             {
-                @Acceleration.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnAcceleration;
-                @Acceleration.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnAcceleration;
-                @Acceleration.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnAcceleration;
-                @Steeringangle.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnSteeringangle;
-                @Steeringangle.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnSteeringangle;
-                @Steeringangle.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnSteeringangle;
+                @Accelerate.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnAccelerate;
+                @Accelerate.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnAccelerate;
+                @Accelerate.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnAccelerate;
+                @Brake.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnBrake;
+                @Brake.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnBrake;
+                @Brake.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnBrake;
+                @LeftTurn.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnLeftTurn;
+                @LeftTurn.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnLeftTurn;
+                @LeftTurn.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnLeftTurn;
+                @RightTurn.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnRightTurn;
+                @RightTurn.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnRightTurn;
+                @RightTurn.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnRightTurn;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
             {
-                @Acceleration.started += instance.OnAcceleration;
-                @Acceleration.performed += instance.OnAcceleration;
-                @Acceleration.canceled += instance.OnAcceleration;
-                @Steeringangle.started += instance.OnSteeringangle;
-                @Steeringangle.performed += instance.OnSteeringangle;
-                @Steeringangle.canceled += instance.OnSteeringangle;
+                @Accelerate.started += instance.OnAccelerate;
+                @Accelerate.performed += instance.OnAccelerate;
+                @Accelerate.canceled += instance.OnAccelerate;
+                @Brake.started += instance.OnBrake;
+                @Brake.performed += instance.OnBrake;
+                @Brake.canceled += instance.OnBrake;
+                @LeftTurn.started += instance.OnLeftTurn;
+                @LeftTurn.performed += instance.OnLeftTurn;
+                @LeftTurn.canceled += instance.OnLeftTurn;
+                @RightTurn.started += instance.OnRightTurn;
+                @RightTurn.performed += instance.OnRightTurn;
+                @RightTurn.canceled += instance.OnRightTurn;
             }
         }
     }
     public MovementActions @Movement => new MovementActions(this);
     public interface IMovementActions
     {
-        void OnAcceleration(InputAction.CallbackContext context);
-        void OnSteeringangle(InputAction.CallbackContext context);
+        void OnAccelerate(InputAction.CallbackContext context);
+        void OnBrake(InputAction.CallbackContext context);
+        void OnLeftTurn(InputAction.CallbackContext context);
+        void OnRightTurn(InputAction.CallbackContext context);
     }
 }

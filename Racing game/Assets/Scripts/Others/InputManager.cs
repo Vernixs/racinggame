@@ -7,7 +7,7 @@ using System;
 
 public class InputManager : MonoBehaviour
 {
-    //public static RebindMovement inputActions;
+    public static Car inputActions;
 
     public static event Action rebindComplete;
     public static event Action rebindCanceled;
@@ -15,13 +15,13 @@ public class InputManager : MonoBehaviour
 
     private void Awake()
     {
-        /*if (inputActions == null)
+        if (inputActions == null)
         {
-            //inputActions = new RebindMovement();
-        }*/
+            inputActions = new RebindMovement();
+        }
     }
 
-    /*public static void StartRebind(string actionName, int bindingIndex, Text statusText, bool excludeMouse)
+    public static void StartRebind(string actionName, int bindingIndex, Text statusText, bool excludeMouse)
     {
         //InputAction action = inputActions.asset.FindAction(actionName);
         if(action == null || action.bindings.Count <= bindingIndex)
@@ -95,13 +95,13 @@ public class InputManager : MonoBehaviour
 
     public static string GetBindingName(string actionName, int bindingIndex)
     {
-        //if(inputActions == null)
-       // {
-           // inputActions = new RebindMovement();
-       // }
+        if(inputActions == null)
+        {
+           inputActions = new RebindMovement();
+        }
 
-        //InputAction action = inputActions.asset.FindAction(actionName);
-        //return action.GetBindingDisplayString(bindingIndex);
+        InputAction action = inputActions.asset.FindAction(actionName);
+        return action.GetBindingDisplayString(bindingIndex);
     }
 
     static void SaveBindingOverride(InputAction action)
@@ -146,10 +146,11 @@ public class InputManager : MonoBehaviour
             {
                 action.RemoveBindingOverride(i);
             }
-            else
-            {
-                action.RemoveBindingOverride(bindingIndex);
-            }
+            
         }
-    }*/
+        else
+        {
+                action.RemoveBindingOverride(bindingIndex);
+        }
+    }
 }

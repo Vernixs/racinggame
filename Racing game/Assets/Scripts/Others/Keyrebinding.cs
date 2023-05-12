@@ -31,7 +31,7 @@ public class Keyrebinding : MonoBehaviour
     [SerializeField]
     Button resetButton;
 
-   /* private void OnEnable()
+   private void OnEnable()
     {
         rebindButton.onClick.AddListener(() => DoRebind());
         resetButton.onClick.AddListener(() => ResetBinding());
@@ -102,5 +102,5 @@ public class Keyrebinding : MonoBehaviour
     void ResetBinding()
     {
 
-    }*/
+    }
 }

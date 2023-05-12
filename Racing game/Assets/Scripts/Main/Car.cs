@@ -22,6 +22,10 @@ public class Car : MonoBehaviour
     public float maxSpeed = 100f;
     public float forwardAccel = 0.9f;
 
+    bool accelerate = false;
+    bool braking = false;
+    bool turningLeft = false;
+    bool turningRight = false;
 
     public InputActionAsset inputActions;
     InputActionMap gameplayActionMap;
@@ -30,17 +34,62 @@ public class Car : MonoBehaviour
 
     //Acceleration and Max Speed
 
-    private void Awake()
+    /*private void Awake()
     {
         gameplayActionMap = inputActions.FindActionMap("Movement");
 
         steeringAngle = gameplayActionMap.FindAction("Steeringangle");
         accelerationcontrols = gameplayActionMap.FindAction("Acceleration");
 
-        steeringAngle.performed += ctx =>  = ctx.ReadValue<float>();
+        steeringAngle.performed += ctx => turnInput  = ctx.ReadValue<float>();
         accelerationcontrols.performed += ctx => speedInput = ctx.ReadValue<float>();
         accelerationcontrols.canceled += ctx => speedInput = 0f;
+    }*/
+
+    public void Accelerate(InputAction.CallbackContext ctx) {
+        if(ctx.performed) {
+            Debug.Log("Accelerate");
+            accelerate = true;
+        } 
+        else if (ctx.canceled) {
+            Debug.Log("Stop accelerate");
+            accelerate = false;
+        }
     }
+
+    public void Brake(InputAction.CallbackContext ctx) {
+         if(ctx.performed) {
+            Debug.Log("braking");
+            braking = true;
+        } 
+        else if (ctx.canceled) {
+            Debug.Log("stop brakinge");
+            braking = false;
+        }
+    }
+
+    public void TurnLeft(InputAction.CallbackContext ctx) {
+        if(ctx.performed) {
+            Debug.Log("turning left");
+            turningLeft = true;
+        } 
+        else if (ctx.canceled) {
+            Debug.Log("stopped turning left");
+            turningLeft = false;
+        }
+    }
+
+    public void TurnRight(InputAction.CallbackContext ctx) {
+        if(ctx.performed) {
+            Debug.Log("turning right");
+            turningRight = true;
+        } 
+        else if (ctx.canceled) {
+            Debug.Log("stopped turning right");
+            turningRight = false;
+        }
+    }
+
     private void Start()
     {
        
@@ -49,9 +98,8 @@ public class Car : MonoBehaviour
 
     private void Update()
     {
-        
         //speedInput = Input.GetAxis("Vertical");
-        if (speedInput > 0)
+        if (accelerate)
         {
             if (speed < maxSpeed)
             {
@@ -62,7 +110,7 @@ public class Car : MonoBehaviour
                 speed = maxSpeed;
             }
         }
-        else if (speedInput <0)
+        else if (braking)
         {
             if (speed > 0)
             {
@@ -77,20 +125,41 @@ public class Car : MonoBehaviour
             }
         }
 
+        float leftInput, rightInput;
+
+        if(turningLeft) {
+            leftInput = -1;
+        } else {
+            leftInput = 0;
+        }
+
+        if (turningRight) {
+            rightInput = 1;
+        } else {
+            rightInput = 0;
+        }
+
+        turnInput = leftInput + rightInput;
+
         //turnInput = Input.GetAxis("Horizontal");
         turnInput = turnInput * (speed / maxSpeed);
 
         float latSpeed = 0;
-
-        if (turnInput > 0)
+        /*if(turningRight)
         {
-            latSpeed = -CalculateCentripedalForce(speed, 70f, 10000f);
+            if (turnInput > 0)
+                {
+                    latSpeed = -CalculateCentripedalForce(speed, 70f, 10000f);
+                }
         }
-        else if (turnInput < 0)
+        
+        else if (turningLeft)
         {
-            latSpeed = CalculateCentripedalForce(speed, 70f, 10000f);
-
-        }
+            if (turnInput < 0)
+            {
+                latSpeed = CalculateCentripedalForce(speed, 70f, 10000f);
+            }
+        }*/
 
         //Turning 
 
