@@ -145,11 +145,11 @@ public class Car : MonoBehaviour
         turnInput = turnInput * (speed / maxSpeed);
 
         float latSpeed = 0;
-        /*if(turningRight)
+        if(turningRight)
         {
             if (turnInput > 0)
                 {
-                    latSpeed = -CalculateCentripedalForce(speed, 70f, 10000f);
+                    latSpeed = -CalculateCentripedalForce(speed, 70f, 5000f);
                 }
         }
         
@@ -157,9 +157,9 @@ public class Car : MonoBehaviour
         {
             if (turnInput < 0)
             {
-                latSpeed = CalculateCentripedalForce(speed, 70f, 10000f);
+                latSpeed = CalculateCentripedalForce(speed, 70f, 5000f);
             }
-        }*/
+        }
 
         //Turning 
 
