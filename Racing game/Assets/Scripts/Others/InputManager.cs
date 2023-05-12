@@ -7,7 +7,7 @@ using System;
 
 public class InputManager : MonoBehaviour
 {
-    public static Car inputActions;
+    public static MovementControls inputActions;
 
     public static event Action rebindComplete;
     public static event Action rebindCanceled;
@@ -17,13 +17,13 @@ public class InputManager : MonoBehaviour
     {
         if (inputActions == null)
         {
-            inputActions = new RebindMovement();
+            inputActions = new MovementControls();
         }
     }
 
     public static void StartRebind(string actionName, int bindingIndex, Text statusText, bool excludeMouse)
     {
-        //InputAction action = inputActions.asset.FindAction(actionName);
+        InputAction action = inputActions.asset.FindAction(actionName);
         if(action == null || action.bindings.Count <= bindingIndex)
         {
             Debug.Log("Could not find action or binding");
@@ -97,7 +97,7 @@ public class InputManager : MonoBehaviour
     {
         if(inputActions == null)
         {
-           inputActions = new RebindMovement();
+           inputActions = new MovementControls();
         }
 
         InputAction action = inputActions.asset.FindAction(actionName);
@@ -112,15 +112,16 @@ public class InputManager : MonoBehaviour
         }
     }
 
-    public static void LoadBindingOverride(string actionName)
+    public static MovementControls LoadBindingOverride(string actionName)
     {
         if (inputActions == null)
         {
-            inputActions = new RebindMovement();
+            inputActions = new MovementControls();
         }
+        return inputActions;
 
         InputAction action = inputActions.asset.FindAction(actionName);
-
+        Debug.Log(actionName + " returned " + action);
         for (int i = 0; i < action.bindings.Count; i++)
         {
             if (!string.IsNullOrEmpty(PlayerPrefs.GetString(action.actionMap + action.name + i)))
@@ -128,6 +129,8 @@ public class InputManager : MonoBehaviour
                 action.ApplyBindingOverride(i, PlayerPrefs.GetString(action.actionMap + action.name + i));
             }
         }
+
+        
     }
 
     public static void ResetBinding(string actionName, int bindingIndex)
