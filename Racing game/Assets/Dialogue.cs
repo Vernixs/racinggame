@@ -8,8 +8,13 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI textcomponent;
     public string[] lines;
     public float textSpeed;
+    public AudioClip[] audioClips;
+    public AudioSource audioSource;
 
     private int index;
+    private Coroutine typingCoroutine;
+    private Coroutine audioCoroutine;
+
     void Start()
     {
         textcomponent.text = string.Empty;
@@ -36,7 +41,8 @@ public class Dialogue : MonoBehaviour
     void StartDialogue()
     {
         index = 0;
-        StartCoroutine(TypeLine());
+        typingCoroutine = StartCoroutine(TypeLine());
+        audioCoroutine = StartCoroutine(PlayAudio());
     }
 
     IEnumerator TypeLine()
@@ -48,13 +54,26 @@ public class Dialogue : MonoBehaviour
         }
     }
 
+    IEnumerator PlayAudio()
+    {
+        for (int i = 0; i < lines.Length; i++)
+        {
+            audioSource.clip = audioClips[i];
+            audioSource.Play();
+            yield return new WaitForSeconds(audioClips[i].length);
+        }
+    }
+
     void NextLine()
     {
         if (index < lines.Length - 1)
         {
             index++;
             textcomponent.text = string.Empty;
-            StartCoroutine(TypeLine());
+            StopCoroutine(typingCoroutine);
+            StopCoroutine(audioCoroutine);
+            typingCoroutine = StartCoroutine(TypeLine());
+            audioCoroutine = StartCoroutine(PlayAudio());
         }
         else
         {
