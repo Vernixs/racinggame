@@ -16,12 +16,14 @@ public class MainMenu : MonoBehaviour
     public void PlayButton()
     {
         panel.SetActive(true);
+        optionsMenu.SetActive(true);
        
     }
 
     public void OptionsButton()
     {
         optionsMenu.SetActive(true);
+        panel.SetActive(true);
     }
 
     public void ExitGame()
@@ -39,6 +41,6 @@ public class MainMenu : MonoBehaviour
 
     public void trackButton()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(1);
     }
 }
