@@ -34,23 +34,17 @@ public class InputManager : MonoBehaviour
         {
             var firstPartIndex = bindingIndex + 1;
             if(firstPartIndex < action.bindings.Count && action.bindings[firstPartIndex].isComposite)
-            {
                 DoRebind(action, bindingIndex, statusText, true, excludeMouse);
-            }
         }
 
         else
-        {
             DoRebind(action, bindingIndex, statusText, false, excludeMouse);
-        }
     }
 
     static void DoRebind(InputAction actionToRebind, int bindingIndex, Text statusText, bool allCompositeParts, bool excludeMouse)
     {
         if(actionToRebind == null || bindingIndex < 0)
-        {
             return;
-        }
 
         statusText.text = $"Press a {actionToRebind.expectedControlType}";
 

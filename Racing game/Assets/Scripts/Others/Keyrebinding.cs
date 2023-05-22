@@ -10,7 +10,7 @@ public class Keyrebinding : MonoBehaviour
     InputActionReference inputActionReference;
 
     [SerializeField]
-    bool excludeMouse = true;
+    private bool excludeMouse = true;
     [Range(0,10)]
     [SerializeField]
     int selectedBinding;
