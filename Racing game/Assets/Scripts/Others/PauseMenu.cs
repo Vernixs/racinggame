@@ -9,6 +9,7 @@ public class PauseMenu : MonoBehaviour
 {
     public GameObject pausePanel;
     public GameObject dialogue;
+    public GameObject loadingScreen;
     
     private void Start()
     {
@@ -39,7 +40,8 @@ public class PauseMenu : MonoBehaviour
 
     public void MainMenu()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
+        loadingScreen.SetActive(true);
     }
 
 }
