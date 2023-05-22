@@ -56,9 +56,8 @@ public class Keyrebinding : MonoBehaviour
     private void OnValidate()
     {
         if(inputActionReference == null)
-        {
             return;
-        }
+
        GetBindingInfo();
        UpdateGUI();
     }
@@ -78,9 +77,7 @@ public class Keyrebinding : MonoBehaviour
     void UpdateGUI()
     {
         if (actionText != null)
-        {
             actionText.text = actionName;
-        }
 
         if (rebindText != null)
         {
