@@ -5,7 +5,7 @@ using TMPro;
 public class timemanager : MonoBehaviour
 {
     [SerializeField]
-    private TextMeshProUGUI inputScore;
+    private TMP_InputField inputScore;
     [SerializeField]
     private TMP_InputField inputName;
 

@@ -7,7 +7,7 @@ using UnityEngine.InputSystem;
 public class Car : MonoBehaviour
 {
     public Rigidbody sphereRB;
-    private float reverseAccel, turnStrenght = 180f, gravityForce = 10f, dragOnGround = 3f;
+    private float reverseAccel, turnStrenght = 180f, gravityForce = -500f, dragOnGround = 3f;
     private float speedInput, turnInput;
     private bool grounded;
     private bool isBraking;
@@ -32,19 +32,7 @@ public class Car : MonoBehaviour
     InputAction steeringAngle;
     InputAction accelerationcontrols;
 
-    //Acceleration and Max Speed
 
-    /*private void Awake()
-    {
-        gameplayActionMap = inputActions.FindActionMap("Movement");
-
-        steeringAngle = gameplayActionMap.FindAction("Steeringangle");
-        accelerationcontrols = gameplayActionMap.FindAction("Acceleration");
-
-        steeringAngle.performed += ctx => turnInput  = ctx.ReadValue<float>();
-        accelerationcontrols.performed += ctx => speedInput = ctx.ReadValue<float>();
-        accelerationcontrols.canceled += ctx => speedInput = 0f;
-    }*/
 
     public void Accelerate(InputAction.CallbackContext ctx) {
         if(ctx.performed) {
@@ -92,7 +80,7 @@ public class Car : MonoBehaviour
 
     private void Start()
     {
-       
+        Time.timeScale = 1;
         sphereRB.transform.parent = null;
     }
 
@@ -205,7 +193,7 @@ public class Car : MonoBehaviour
         {
             sphereRB.drag = 0.1f;
 
-            sphereRB.AddForce(Vector3.up * -gravityForce * 100f);
+            //sphereRB.AddForce(Vector3.up * -gravityForce * 100f);
         }
         
     }

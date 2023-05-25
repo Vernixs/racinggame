@@ -9,7 +9,9 @@ public class newcheckpoint : MonoBehaviour
     public GameObject start;
     public GameObject end;
     public GameObject[] checkpoints;
-    public GameObject loadingScreen;
+    
+    public GameObject leaderboard;
+    public GameObject dialogue;
 
     public float laps = 1;
 
@@ -67,8 +69,9 @@ public class newcheckpoint : MonoBehaviour
             {
                 if (finished)
                 {
-                    SceneManager.LoadScene(0);
-                    loadingScreen.SetActive(true);
+                    leaderboard.SetActive(true);
+                    dialogue.SetActive(false);
+                    Time.timeScale = 0;
                 }
                 if (thisCheckpoint == checkpoints[i] && i == currentCheckpoint)
                 {
